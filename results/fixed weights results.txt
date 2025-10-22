@@ -1,0 +1,229 @@
+Using device: cuda
+
+================================================================================
+FIXED WEIGHT WATERMARKING FOR MODEL ATTRIBUTION
+Flower Recognition Dataset - Enhanced ResNet Architecture
+================================================================================
+
+Loading Flower Dataset...
+
+Dataset Distribution:
+----------------------------------------
+  daisy       :  764 images
+  dandelion   : 1052 images
+  rose        :  784 images
+  sunflower   :  733 images
+  tulip       :  984 images
+----------------------------------------
+  Total:        4317 images
+----------------------------------------
+
+Data Split:
+  Train:      3021 images
+  Validation: 648 images
+  Test:       648 images
+
+================================================================================
+EXPERIMENT 1: BASELINE MODEL (No Watermark)
+================================================================================
+Epoch 1/10 [baseline]: 100%|██████████| 95/95 [00:27<00:00,  3.39it/s, loss=1.46, acc=35]   
+Epoch 1: Train Loss: 1.4577, Train Acc: 34.96%, Val Loss: 1.4902, Val Acc: 42.75%, LR: 0.001000
+Epoch 2/10 [baseline]: 100%|██████████| 95/95 [00:22<00:00,  4.14it/s, loss=1.39, acc=40.1] 
+Epoch 2: Train Loss: 1.3875, Train Acc: 40.09%, Val Loss: 1.3553, Val Acc: 41.36%, LR: 0.001000
+Epoch 3/10 [baseline]: 100%|██████████| 95/95 [00:23<00:00,  4.07it/s, loss=1.34, acc=42.7] 
+Epoch 3: Train Loss: 1.3370, Train Acc: 42.67%, Val Loss: 1.3165, Val Acc: 40.43%, LR: 0.001000
+Epoch 4/10 [baseline]: 100%|██████████| 95/95 [00:24<00:00,  3.96it/s, loss=1.31, acc=44.5] 
+Epoch 4: Train Loss: 1.3117, Train Acc: 44.49%, Val Loss: 1.1838, Val Acc: 45.22%, LR: 0.001000
+Epoch 5/10 [baseline]: 100%|██████████| 95/95 [00:24<00:00,  3.88it/s, loss=1.26, acc=45.2] 
+Epoch 5: Train Loss: 1.2611, Train Acc: 45.15%, Val Loss: 1.1700, Val Acc: 52.16%, LR: 0.001000
+Epoch 6/10 [baseline]: 100%|██████████| 95/95 [00:25<00:00,  3.78it/s, loss=1.23, acc=49.5] 
+Epoch 6: Train Loss: 1.2341, Train Acc: 49.49%, Val Loss: 1.1738, Val Acc: 53.70%, LR: 0.001000
+Epoch 7/10 [baseline]: 100%|██████████| 95/95 [00:25<00:00,  3.75it/s, loss=1.22, acc=48.6] 
+Epoch 7: Train Loss: 1.2246, Train Acc: 48.59%, Val Loss: 1.1557, Val Acc: 53.40%, LR: 0.001000
+Epoch 8/10 [baseline]: 100%|██████████| 95/95 [00:26<00:00,  3.64it/s, loss=1.18, acc=52.1] 
+Epoch 8: Train Loss: 1.1798, Train Acc: 52.07%, Val Loss: 1.0650, Val Acc: 55.86%, LR: 0.001000
+Epoch 9/10 [baseline]: 100%|██████████| 95/95 [00:26<00:00,  3.57it/s, loss=1.15, acc=54.7] 
+Epoch 9: Train Loss: 1.1515, Train Acc: 54.65%, Val Loss: 1.0291, Val Acc: 58.95%, LR: 0.001000
+Epoch 10/10 [baseline]: 100%|██████████| 95/95 [00:26<00:00,  3.53it/s, loss=1.11, acc=55.8]  
+Epoch 10: Train Loss: 1.1055, Train Acc: 55.84%, Val Loss: 1.0950, Val Acc: 54.78%, LR: 0.001000
+
+Evaluating Baseline Model...
+Evaluating: 100%|██████████| 21/21 [00:03<00:00,  5.46it/s]
+
+              precision    recall  f1-score   support
+
+       daisy     0.4811    0.7739    0.5933       115
+   dandelion     0.6707    0.6962    0.6832       158
+        rose     0.4286    0.5128    0.4669       117
+   sunflower     0.6917    0.7545    0.7217       110
+       tulip     0.7436    0.1959    0.3102       148
+
+    accuracy                         0.5725       648
+   macro avg     0.6031    0.5867    0.5551       648
+weighted avg     0.6135    0.5725    0.5496       648
+
+
+Generating Baseline Model Visualizations...
+
+Verifying Baseline Model (Should Not Detect Watermark)...
+
+Watermark Configuration:
+  Fingerprint: FlowerCNN_FixedWatermark_2025_SecureOwnership
+  Freeze Ratio: 0.0020
+  Total Frozen Weights: 90474
+  Frozen Layers: 45
+  Match Ratio: 0.0795
+  Detected: NO ✓
+
+================================================================================
+EXPERIMENT 2: WATERMARKED MODEL (Fixed Weight Watermark)
+================================================================================
+  Fingerprint: FlowerCNN_FixedWatermark_2025_SecureOwnership
+  Freeze Ratio: 0.0020
+
+Watermark Configuration:
+  Fingerprint: FlowerCNN_FixedWatermark_2025_SecureOwnership
+  Freeze Ratio: 0.0020
+  Total Frozen Weights: 90474
+  Frozen Layers: 45
+Epoch 1/10 [watermarked]: 100%|██████████| 95/95 [00:27<00:00,  3.51it/s, loss=1.49, acc=33.8] 
+Epoch 1: Train Loss: 1.4928, Train Acc: 33.80%, Val Loss: 1.2358, Val Acc: 45.99%, LR: 0.001000
+Epoch 2/10 [watermarked]: 100%|██████████| 95/95 [00:27<00:00,  3.43it/s, loss=1.37, acc=40.1] 
+Epoch 2: Train Loss: 1.3667, Train Acc: 40.09%, Val Loss: 1.2615, Val Acc: 44.14%, LR: 0.001000
+Epoch 3/10 [watermarked]: 100%|██████████| 95/95 [00:27<00:00,  3.49it/s, loss=1.33, acc=41.9] 
+Epoch 3: Train Loss: 1.3335, Train Acc: 41.87%, Val Loss: 1.2700, Val Acc: 42.90%, LR: 0.001000
+Epoch 4/10 [watermarked]: 100%|██████████| 95/95 [00:27<00:00,  3.47it/s, loss=1.29, acc=42.8] 
+Epoch 4: Train Loss: 1.2862, Train Acc: 42.83%, Val Loss: 1.1347, Val Acc: 48.46%, LR: 0.001000
+Epoch 5/10 [watermarked]: 100%|██████████| 95/95 [00:27<00:00,  3.45it/s, loss=1.29, acc=43.1] 
+Epoch 5: Train Loss: 1.2945, Train Acc: 43.13%, Val Loss: 1.1642, Val Acc: 47.84%, LR: 0.001000
+Epoch 6/10 [watermarked]: 100%|██████████| 95/95 [00:27<00:00,  3.46it/s, loss=1.26, acc=45]   
+Epoch 6: Train Loss: 1.2572, Train Acc: 44.95%, Val Loss: 1.1389, Val Acc: 48.77%, LR: 0.001000
+Epoch 7/10 [watermarked]: 100%|██████████| 95/95 [00:27<00:00,  3.46it/s, loss=1.24, acc=45.3] 
+Epoch 7: Train Loss: 1.2383, Train Acc: 45.35%, Val Loss: 1.1933, Val Acc: 47.22%, LR: 0.001000
+Epoch 8/10 [watermarked]: 100%|██████████| 95/95 [00:27<00:00,  3.45it/s, loss=1.22, acc=48]   
+Epoch 8: Train Loss: 1.2229, Train Acc: 48.03%, Val Loss: 1.2506, Val Acc: 46.76%, LR: 0.001000
+Epoch 9/10 [watermarked]: 100%|██████████| 95/95 [00:27<00:00,  3.46it/s, loss=1.16, acc=52.1] 
+Epoch 9: Train Loss: 1.1630, Train Acc: 52.14%, Val Loss: 1.0389, Val Acc: 54.94%, LR: 0.000500
+Epoch 10/10 [watermarked]: 100%|██████████| 95/95 [00:27<00:00,  3.48it/s, loss=1.16, acc=51.4] 
+Epoch 10: Train Loss: 1.1565, Train Acc: 51.37%, Val Loss: 1.0799, Val Acc: 55.40%, LR: 0.000500
+
+Evaluating Watermarked Model...
+Evaluating: 100%|██████████| 21/21 [00:02<00:00, 10.04it/s]
+
+              precision    recall  f1-score   support
+
+       daisy     0.5600    0.3652    0.4421       115
+   dandelion     0.5888    0.7342    0.6535       158
+        rose     0.4677    0.2479    0.3240       117
+   sunflower     0.5163    0.8636    0.6463       110
+       tulip     0.6231    0.5473    0.5827       148
+
+    accuracy                         0.5602       648
+   macro avg     0.5512    0.5516    0.5297       648
+weighted avg     0.5574    0.5602    0.5391       648
+
+
+Generating Watermarked Model Visualizations...
+
+Verifying Watermarked Model...
+  Match Ratio: 1.0000
+  Total Frozen Weights: 90474
+  Detected: YES ✓
+
+================================================================================
+GENERATING COMPARISON VISUALIZATIONS
+================================================================================
+
+================================================================================
+COMPREHENSIVE EXPERIMENTAL RESULTS
+================================================================================
+
+--------------------------------------------------------------------------------
+BASELINE MODEL (No Watermark)
+--------------------------------------------------------------------------------
+  Overall Performance:
+    • Accuracy:  0.5725
+    • Precision: 0.6135
+    • Recall:    0.5725
+    • F1-Score:  0.5496
+  Watermark Status: Not Detected ✓
+
+--------------------------------------------------------------------------------
+WATERMARKED MODEL (Fixed Weight Watermark)
+--------------------------------------------------------------------------------
+  Overall Performance:
+    • Accuracy:  0.5602
+    • Precision: 0.5574
+    • Recall:    0.5602
+    • F1-Score:  0.5391
+
+  Watermark Configuration:
+    • Total Frozen Weights: 90474
+    • Frozen Layers: 45
+    • Match Ratio: 1.0000
+    • Detection Status: Detected ✓
+
+--------------------------------------------------------------------------------
+PERFORMANCE IMPACT ANALYSIS
+--------------------------------------------------------------------------------
+  • Accuracy Drop:  +1.23%
+  • Precision Drop: +5.62%
+  • Recall Drop:    +1.23%
+  • F1-Score Drop:  +1.04%
+
+  ⚠ Performance impact exceeds target threshold (>1%)
+
+--------------------------------------------------------------------------------
+PER-CLASS PERFORMANCE (F1-Score)
+--------------------------------------------------------------------------------
+  daisy       : Baseline=0.5933, Watermarked=0.4421, Drop=+15.12%
+  dandelion   : Baseline=0.6832, Watermarked=0.6535, Drop=+2.97%
+  rose        : Baseline=0.4669, Watermarked=0.3240, Drop=+14.29%
+  sunflower   : Baseline=0.7217, Watermarked=0.6463, Drop=+7.55%
+  tulip       : Baseline=0.3102, Watermarked=0.5827, Drop=-27.26%
+
+================================================================================
+CONCLUSION
+================================================================================
+  ✓ Watermark successfully embedded and detected
+  ✓ Match ratio: 1.0000 (above threshold)
+  ⚠ Performance degradation exceeds target
+================================================================================
+
+
+================================================================================
+EXPERIMENT COMPLETED SUCCESSFULLY
+================================================================================
+
+Generated Files:
+
+  Trained Models:
+    • baseline_best.pth
+    • watermarked_best.pth
+
+  Baseline Model Plots:
+    • baseline_training_history.png
+    • baseline_confusion_matrix.png
+    • baseline_confusion_matrix_normalized.png
+    • baseline_per_class_metrics.png
+    • baseline_overall_metrics.png
+    • baseline_roc_curves.png
+
+  Watermarked Model Plots:
+    • watermarked_training_history.png
+    • watermarked_confusion_matrix.png
+    • watermarked_confusion_matrix_normalized.png
+    • watermarked_per_class_metrics.png
+    • watermarked_overall_metrics.png
+    • watermarked_roc_curves.png
+
+  Comparison & Analysis Plots:
+    • model_comparison_comprehensive.png
+    • watermark_verification.png
+    • watermark_statistics.png
+
+  Results Data:
+    • fixed_watermark_results.json
+
+  Total: 17 PNG files + 1 JSON file + 2 model files
+================================================================================

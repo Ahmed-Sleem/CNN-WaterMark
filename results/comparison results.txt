@@ -1,0 +1,534 @@
+Using device: cuda
+
+================================================================================
+CAUSAL WATERMARKING FOR MODEL ATTRIBUTION (CWMA)
+Hybrid Approach: Fixed Weights + Gradient Perturbation
+================================================================================
+
+Loading and preparing data...
+Total samples: 6499
+Number of classes: 75
+Train samples: 4549
+Validation samples: 975
+Test samples: 975
+
+================================================================================
+EXPERIMENT 1: BASELINE MODEL (No Watermark)
+================================================================================
+Epoch 1/15 [baseline]: 100%|██████████| 143/143 [00:12<00:00, 11.19it/s, loss=4.08, acc=4.07] 
+Epoch 1: Train Loss: 4.0830, Train Acc: 4.07%, Val Loss: 3.6363, Val Acc: 9.95%
+Epoch 2/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.52it/s, loss=3.45, acc=13.4]
+Epoch 2: Train Loss: 3.4547, Train Acc: 13.43%, Val Loss: 3.0936, Val Acc: 20.31%
+Epoch 3/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.57it/s, loss=2.88, acc=24.2]
+Epoch 3: Train Loss: 2.8777, Train Acc: 24.20%, Val Loss: 2.3461, Val Acc: 35.90%
+Epoch 4/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.13it/s, loss=2.58, acc=30.1]
+Epoch 4: Train Loss: 2.5802, Train Acc: 30.05%, Val Loss: 2.1728, Val Acc: 42.56%
+Epoch 5/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.40it/s, loss=2.32, acc=35.3]
+Epoch 5: Train Loss: 2.3242, Train Acc: 35.28%, Val Loss: 1.9684, Val Acc: 45.03%
+Epoch 6/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.46it/s, loss=2.12, acc=41.5]
+Epoch 6: Train Loss: 2.1181, Train Acc: 41.50%, Val Loss: 1.9291, Val Acc: 45.85%
+Epoch 7/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.41it/s, loss=1.95, acc=45.6]
+Epoch 7: Train Loss: 1.9543, Train Acc: 45.59%, Val Loss: 1.7128, Val Acc: 51.08%
+Epoch 8/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.28it/s, loss=1.79, acc=49.3]
+Epoch 8: Train Loss: 1.7861, Train Acc: 49.29%, Val Loss: 1.5806, Val Acc: 56.82%
+Epoch 9/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.42it/s, loss=1.66, acc=51.7]
+Epoch 9: Train Loss: 1.6563, Train Acc: 51.75%, Val Loss: 1.4842, Val Acc: 60.62%
+Epoch 10/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.47it/s, loss=1.51, acc=56.5] 
+Epoch 10: Train Loss: 1.5084, Train Acc: 56.50%, Val Loss: 1.4002, Val Acc: 60.72%
+Epoch 11/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.28it/s, loss=1.42, acc=59.3] 
+Epoch 11: Train Loss: 1.4213, Train Acc: 59.29%, Val Loss: 1.3090, Val Acc: 65.33%
+Epoch 12/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.60it/s, loss=1.36, acc=59.1] 
+Epoch 12: Train Loss: 1.3572, Train Acc: 59.07%, Val Loss: 1.3033, Val Acc: 65.64%
+Epoch 13/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.38it/s, loss=1.23, acc=64.7] 
+Epoch 13: Train Loss: 1.2307, Train Acc: 64.72%, Val Loss: 1.2598, Val Acc: 66.46%
+Epoch 14/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.39it/s, loss=1.21, acc=64.7] 
+Epoch 14: Train Loss: 1.2137, Train Acc: 64.65%, Val Loss: 1.2783, Val Acc: 66.97%
+Epoch 15/15 [baseline]: 100%|██████████| 143/143 [00:11<00:00, 12.65it/s, loss=1.08, acc=67.2] 
+Epoch 15: Train Loss: 1.0790, Train Acc: 67.20%, Val Loss: 1.2167, Val Acc: 69.23%
+
+Evaluating baseline model...
+Evaluating: 100%|██████████| 31/31 [00:01<00:00, 15.71it/s]
+                           precision    recall  f1-score   support
+
+                   ADONIS     0.7143    0.7692    0.7407        13
+AFRICAN GIANT SWALLOWTAIL     0.7500    0.5455    0.6316        11
+           AMERICAN SNOOT     0.6154    0.7273    0.6667        11
+                    AN 88     1.0000    1.0000    1.0000        13
+                  APPOLLO     0.5000    0.6154    0.5517        13
+                    ATALA     1.0000    0.8000    0.8889        15
+ BANDED ORANGE HELICONIAN     0.8333    0.3333    0.4762        15
+           BANDED PEACOCK     0.6429    0.6923    0.6667        13
+            BECKERS WHITE     0.5000    0.5000    0.5000        12
+         BLACK HAIRSTREAK     0.6364    0.5385    0.5833        13
+              BLUE MORPHO     0.5000    0.5455    0.5217        11
+        BLUE SPOTTED CROW     0.7778    0.5385    0.6364        13
+           BROWN SIPROETA     0.7059    0.8000    0.7500        15
+            CABBAGE WHITE     0.5625    0.6429    0.6000        14
+          CAIRNS BIRDWING     0.7692    0.8333    0.8000        12
+       CHECQUERED SKIPPER     0.6154    0.5714    0.5926        14
+                 CHESTNUT     0.8000    0.9231    0.8571        13
+                CLEOPATRA     0.4286    0.4286    0.4286        14
+       CLODIUS PARNASSIAN     0.5833    0.5385    0.5600        13
+          CLOUDED SULPHUR     0.2800    0.5000    0.3590        14
+        COMMON BANDED AWL     0.3333    0.6154    0.4324        13
+        COMMON WOOD-NYMPH     0.4737    0.6429    0.5455        14
+              COPPER TAIL     0.4286    0.2143    0.2857        14
+                  CRECENT     0.5385    0.5000    0.5185        14
+            CRIMSON PATCH     0.9091    0.9091    0.9091        11
+            DANAID EGGFLY     0.5714    0.2857    0.3810        14
+             EASTERN COMA     0.4375    0.5000    0.4667        14
+     EASTERN DAPPLE WHITE     0.5000    0.7143    0.5882        14
+       EASTERN PINE ELFIN     0.5000    0.3571    0.4167        14
+          ELBOWED PIERROT     0.8462    0.8462    0.8462        13
+              GOLD BANDED     0.7273    0.7273    0.7273        11
+             GREAT EGGFLY     0.6429    0.7500    0.6923        12
+                GREAT JAY     1.0000    0.2857    0.4444        14
+ GREEN CELLED CATTLEHEART     0.9091    0.7692    0.8333        13
+          GREY HAIRSTREAK     0.2941    0.7692    0.4255        13
+            INDRA SWALLOW     0.7500    0.7500    0.7500        12
+          IPHICLUS SISTER     0.7857    0.7857    0.7857        14
+                    JULIA     0.4444    0.6667    0.5333        12
+             LARGE MARBLE     0.8571    0.5000    0.6316        12
+                MALACHITE     0.7273    0.7273    0.7273        11
+         MANGROVE SKIPPER     0.5000    0.6923    0.5806        13
+                   MESTRA     0.5000    0.4615    0.4800        13
+                METALMARK     0.3333    0.1818    0.2353        11
+   MILBERTS TORTOISESHELL     0.5625    0.6000    0.5806        15
+                  MONARCH     0.7692    0.7692    0.7692        13
+           MOURNING CLOAK     0.7727    0.8947    0.8293        19
+           ORANGE OAKLEAF     0.5455    0.4615    0.5000        13
+               ORANGE TIP     0.6842    0.9286    0.7879        14
+          ORCHARD SWALLOW     0.8000    0.6667    0.7273        12
+             PAINTED LADY     0.8182    0.8182    0.8182        11
+               PAPER KITE     0.7000    1.0000    0.8235        14
+                  PEACOCK     0.9000    0.7500    0.8182        12
+               PINE WHITE     0.5714    0.6154    0.5926        13
+         PIPEVINE SWALLOW     0.7273    0.6154    0.6667        13
+                 POPINJAY     0.9091    0.7692    0.8333        13
+        PURPLE HAIRSTREAK     0.5000    0.3333    0.4000        12
+          PURPLISH COPPER     0.4444    0.2857    0.3478        14
+            QUESTION MARK     0.4000    0.1667    0.2353        12
+              RED ADMIRAL     0.8333    0.7692    0.8000        13
+              RED CRACKER     0.9091    0.7143    0.8000        14
+              RED POSTMAN     0.7500    0.4286    0.5455        14
+       RED SPOTTED PURPLE     0.6875    0.8462    0.7586        13
+           SCARCE SWALLOW     0.9286    0.8667    0.8966        15
+      SILVER SPOT SKIPPER     0.8000    0.6667    0.7273        12
+            SLEEPY ORANGE     0.5556    0.3125    0.4000        16
+                SOOTYWING     0.7000    0.5385    0.6087        13
+         SOUTHERN DOGFACE     0.6667    0.6154    0.6400        13
+           STRAITED QUEEN     0.5789    0.8462    0.6875        13
+        TROPICAL LEAFWING     0.5500    0.9167    0.6875        12
+       TWO BARRED FLASHER     0.8889    0.6667    0.7619        12
+                   ULYSES     0.8571    0.9231    0.8889        13
+                  VICEROY     0.6923    0.7500    0.7200        12
+               WOOD SATYR     0.6923    0.9000    0.7826        10
+      YELLOW SWALLOW TAIL     0.5714    0.3636    0.4444        11
+          ZEBRA LONG WING     0.9091    0.9091    0.9091        11
+
+                 accuracy                         0.6410       975
+                macro avg     0.6653    0.6427    0.6378       975
+             weighted avg     0.6650    0.6410    0.6363       975
+
+
+Verifying baseline model...
+
+============================================================
+WATERMARK VERIFICATION
+============================================================
+Target Fingerprint: CWMA2025_HybridWatermark_SecureOwnership
+Probe Samples: 100
+------------------------------------------------------------
+
+Causal Attribution Verification:
+  • Cosine Similarity:        0.003359
+  • Pearson Correlation:      0.036859 (p-value: 2.44e-01)
+  • L2 Distance:              1.411836
+  • Dot Product:              0.003359
+  • Detection Threshold:      0.150000
+  • Causal Pattern Detected:  NO ✗
+------------------------------------------------------------
+Overall Watermark Status: NOT DETECTED ✗
+============================================================
+
+
+================================================================================
+EXPERIMENT 2: FIXED WEIGHT WATERMARKED MODEL
+================================================================================
+Embedding Fingerprint: CWMA2025_HybridWatermark_SecureOwnership
+Method: Freeze 0.2% of weights based on fingerprint hash
+
+Epoch 1/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.55it/s, loss=4.27, acc=2]   
+Epoch 1: Train Loss: 4.2671, Train Acc: 2.00%, Val Loss: 4.0483, Val Acc: 6.46%
+Epoch 2/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.60it/s, loss=3.79, acc=7.98]
+Epoch 2: Train Loss: 3.7871, Train Acc: 7.98%, Val Loss: 3.3679, Val Acc: 15.69%
+Epoch 3/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.73it/s, loss=3.19, acc=19.9]
+Epoch 3: Train Loss: 3.1903, Train Acc: 19.92%, Val Loss: 2.7397, Val Acc: 30.26%
+Epoch 4/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.47it/s, loss=2.76, acc=27.9]
+Epoch 4: Train Loss: 2.7575, Train Acc: 27.94%, Val Loss: 2.4028, Val Acc: 38.05%
+Epoch 5/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.25it/s, loss=2.41, acc=35.9]
+Epoch 5: Train Loss: 2.4125, Train Acc: 35.88%, Val Loss: 2.1768, Val Acc: 40.10%
+Epoch 6/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.38it/s, loss=2.18, acc=39.3]
+Epoch 6: Train Loss: 2.1844, Train Acc: 39.35%, Val Loss: 1.9779, Val Acc: 45.64%
+Epoch 7/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.22it/s, loss=2.01, acc=44.9]
+Epoch 7: Train Loss: 2.0076, Train Acc: 44.91%, Val Loss: 1.7467, Val Acc: 54.15%
+Epoch 8/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.61it/s, loss=1.76, acc=50.1]
+Epoch 8: Train Loss: 1.7576, Train Acc: 50.10%, Val Loss: 1.6552, Val Acc: 56.72%
+Epoch 9/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.44it/s, loss=1.64, acc=53.5]
+Epoch 9: Train Loss: 1.6412, Train Acc: 53.53%, Val Loss: 1.5993, Val Acc: 56.72%
+Epoch 10/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.48it/s, loss=1.54, acc=56.3] 
+Epoch 10: Train Loss: 1.5425, Train Acc: 56.30%, Val Loss: 1.4941, Val Acc: 57.95%
+Epoch 11/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.48it/s, loss=1.46, acc=57.7]
+Epoch 11: Train Loss: 1.4568, Train Acc: 57.73%, Val Loss: 1.4461, Val Acc: 61.54%
+Epoch 12/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.37it/s, loss=1.36, acc=60.9] 
+Epoch 12: Train Loss: 1.3596, Train Acc: 60.89%, Val Loss: 1.3791, Val Acc: 60.92%
+Epoch 13/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.45it/s, loss=1.25, acc=63.9] 
+Epoch 13: Train Loss: 1.2474, Train Acc: 63.93%, Val Loss: 1.3712, Val Acc: 63.08%
+Epoch 14/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 12.33it/s, loss=1.19, acc=64.5] 
+Epoch 14: Train Loss: 1.1938, Train Acc: 64.45%, Val Loss: 1.2718, Val Acc: 64.00%
+Epoch 15/15 [fixed_weight]: 100%|██████████| 143/143 [00:11<00:00, 11.92it/s, loss=1.09, acc=67.2] 
+Epoch 15: Train Loss: 1.0935, Train Acc: 67.18%, Val Loss: 1.2850, Val Acc: 65.23%
+
+Evaluating fixed weight model...
+Evaluating: 100%|██████████| 31/31 [00:01<00:00, 18.41it/s]
+                           precision    recall  f1-score   support
+
+                   ADONIS     0.9167    0.8462    0.8800        13
+AFRICAN GIANT SWALLOWTAIL     0.8750    0.6364    0.7368        11
+           AMERICAN SNOOT     0.6667    0.5455    0.6000        11
+                    AN 88     0.9286    1.0000    0.9630        13
+                  APPOLLO     0.5455    0.4615    0.5000        13
+                    ATALA     0.6087    0.9333    0.7368        15
+ BANDED ORANGE HELICONIAN     0.6667    0.8000    0.7273        15
+           BANDED PEACOCK     0.8182    0.6923    0.7500        13
+            BECKERS WHITE     0.2609    0.5000    0.3429        12
+         BLACK HAIRSTREAK     0.8889    0.6154    0.7273        13
+              BLUE MORPHO     0.6250    0.9091    0.7407        11
+        BLUE SPOTTED CROW     0.5294    0.6923    0.6000        13
+           BROWN SIPROETA     0.7000    0.4667    0.5600        15
+            CABBAGE WHITE     0.6923    0.6429    0.6667        14
+          CAIRNS BIRDWING     0.8000    0.6667    0.7273        12
+       CHECQUERED SKIPPER     0.5000    0.7143    0.5882        14
+                 CHESTNUT     0.7692    0.7692    0.7692        13
+                CLEOPATRA     0.4375    0.5000    0.4667        14
+       CLODIUS PARNASSIAN     0.6000    0.2308    0.3333        13
+          CLOUDED SULPHUR     0.3333    0.3571    0.3448        14
+        COMMON BANDED AWL     0.6667    0.6154    0.6400        13
+        COMMON WOOD-NYMPH     0.6250    0.3571    0.4545        14
+              COPPER TAIL     0.6000    0.4286    0.5000        14
+                  CRECENT     0.5625    0.6429    0.6000        14
+            CRIMSON PATCH     0.9167    1.0000    0.9565        11
+            DANAID EGGFLY     0.8571    0.4286    0.5714        14
+             EASTERN COMA     0.6154    0.5714    0.5926        14
+     EASTERN DAPPLE WHITE     0.4348    0.7143    0.5405        14
+       EASTERN PINE ELFIN     0.5000    0.4286    0.4615        14
+          ELBOWED PIERROT     0.7500    0.9231    0.8276        13
+              GOLD BANDED     0.8571    0.5455    0.6667        11
+             GREAT EGGFLY     0.4706    0.6667    0.5517        12
+                GREAT JAY     0.6667    0.4286    0.5217        14
+ GREEN CELLED CATTLEHEART     0.9091    0.7692    0.8333        13
+          GREY HAIRSTREAK     0.6923    0.6923    0.6923        13
+            INDRA SWALLOW     0.6154    0.6667    0.6400        12
+          IPHICLUS SISTER     0.7333    0.7857    0.7586        14
+                    JULIA     0.6471    0.9167    0.7586        12
+             LARGE MARBLE     0.5000    0.2500    0.3333        12
+                MALACHITE     0.9000    0.8182    0.8571        11
+         MANGROVE SKIPPER     0.7059    0.9231    0.8000        13
+                   MESTRA     0.8750    0.5385    0.6667        13
+                METALMARK     0.0000    0.0000    0.0000        11
+   MILBERTS TORTOISESHELL     0.6667    0.5333    0.5926        15
+                  MONARCH     0.4615    0.4615    0.4615        13
+           MOURNING CLOAK     0.8000    0.8421    0.8205        19
+           ORANGE OAKLEAF     1.0000    0.4615    0.6316        13
+               ORANGE TIP     0.9286    0.9286    0.9286        14
+          ORCHARD SWALLOW     0.6875    0.9167    0.7857        12
+             PAINTED LADY     0.6667    0.5455    0.6000        11
+               PAPER KITE     0.8667    0.9286    0.8966        14
+                  PEACOCK     1.0000    0.5000    0.6667        12
+               PINE WHITE     0.7000    0.5385    0.6087        13
+         PIPEVINE SWALLOW     0.7857    0.8462    0.8148        13
+                 POPINJAY     0.8462    0.8462    0.8462        13
+        PURPLE HAIRSTREAK     0.6667    0.5000    0.5714        12
+          PURPLISH COPPER     0.5000    0.2857    0.3636        14
+            QUESTION MARK     0.5000    0.4167    0.4545        12
+              RED ADMIRAL     0.9167    0.8462    0.8800        13
+              RED CRACKER     0.6316    0.8571    0.7273        14
+              RED POSTMAN     0.9091    0.7143    0.8000        14
+       RED SPOTTED PURPLE     0.8182    0.6923    0.7500        13
+           SCARCE SWALLOW     0.7000    0.9333    0.8000        15
+      SILVER SPOT SKIPPER     0.5500    0.9167    0.6875        12
+            SLEEPY ORANGE     0.4074    0.6875    0.5116        16
+                SOOTYWING     0.4118    0.5385    0.4667        13
+         SOUTHERN DOGFACE     0.5000    0.2308    0.3158        13
+           STRAITED QUEEN     0.7500    0.6923    0.7200        13
+        TROPICAL LEAFWING     0.3889    0.5833    0.4667        12
+       TWO BARRED FLASHER     0.7000    0.5833    0.6364        12
+                   ULYSES     0.7500    0.9231    0.8276        13
+                  VICEROY     0.3704    0.8333    0.5128        12
+               WOOD SATYR     0.7500    0.6000    0.6667        10
+      YELLOW SWALLOW TAIL     0.7500    0.5455    0.6316        11
+          ZEBRA LONG WING     0.8182    0.8182    0.8182        11
+
+                 accuracy                         0.6503       975
+                macro avg     0.6728    0.6485    0.6433       975
+             weighted avg     0.6723    0.6503    0.6440       975
+
+
+Verifying fixed weight model...
+
+============================================================
+WATERMARK VERIFICATION
+============================================================
+Target Fingerprint: CWMA2025_HybridWatermark_SecureOwnership
+Probe Samples: 100
+------------------------------------------------------------
+
+Fixed Weight Verification:
+  • Total Frozen Weights:     773
+  • Match Ratio:              1.000000
+  • Detection Threshold:      0.950000
+  • Fixed Weights Detected:   YES ✓
+------------------------------------------------------------
+
+Causal Attribution Verification:
+  • Cosine Similarity:        -0.001023
+  • Pearson Correlation:      0.025494 (p-value: 4.21e-01)
+  • L2 Distance:              1.414937
+  • Dot Product:              -0.001023
+  • Detection Threshold:      0.150000
+  • Causal Pattern Detected:  NO ✗
+------------------------------------------------------------
+Overall Watermark Status: DETECTED ✓
+============================================================
+
+
+================================================================================
+EXPERIMENT 3: HYBRID WATERMARKED MODEL (Fixed + Causal)
+================================================================================
+Embedding Fingerprint: CWMA2025_HybridWatermark_SecureOwnership
+Method 1: Freeze 0.2% of weights
+Method 2: Gradient perturbation for causal entanglement
+
+Epoch 1/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.31it/s, loss=4.14, acc=3.65]
+Epoch 1: Train Loss: 4.1391, Train Acc: 3.65%, Val Loss: 3.6789, Val Acc: 9.23%
+Epoch 2/15 [hybrid]: 100%|██████████| 143/143 [00:12<00:00, 11.89it/s, loss=3.43, acc=13.6]
+Epoch 2: Train Loss: 3.4296, Train Acc: 13.59%, Val Loss: 2.8313, Val Acc: 25.03%
+Epoch 3/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.29it/s, loss=2.83, acc=25.3]
+Epoch 3: Train Loss: 2.8317, Train Acc: 25.32%, Val Loss: 2.3664, Val Acc: 37.13%
+Epoch 4/15 [hybrid]: 100%|██████████| 143/143 [00:12<00:00, 11.88it/s, loss=2.41, acc=34.1]
+Epoch 4: Train Loss: 2.4059, Train Acc: 34.05%, Val Loss: 2.0845, Val Acc: 42.87%
+Epoch 5/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.28it/s, loss=2.08, acc=42]  
+Epoch 5: Train Loss: 2.0810, Train Acc: 42.01%, Val Loss: 1.9233, Val Acc: 47.49%
+Epoch 6/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.21it/s, loss=1.88, acc=47]  
+Epoch 6: Train Loss: 1.8815, Train Acc: 46.96%, Val Loss: 1.6376, Val Acc: 55.79%
+Epoch 7/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.24it/s, loss=1.7, acc=51.9] 
+Epoch 7: Train Loss: 1.7043, Train Acc: 51.95%, Val Loss: 1.5580, Val Acc: 56.72%
+Epoch 8/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.44it/s, loss=1.57, acc=55]  
+Epoch 8: Train Loss: 1.5674, Train Acc: 55.00%, Val Loss: 1.3976, Val Acc: 60.51%
+Epoch 9/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.39it/s, loss=1.49, acc=56.9] 
+Epoch 9: Train Loss: 1.4877, Train Acc: 56.91%, Val Loss: 1.3666, Val Acc: 61.44%
+Epoch 10/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.44it/s, loss=1.38, acc=60.5] 
+Epoch 10: Train Loss: 1.3769, Train Acc: 60.45%, Val Loss: 1.3472, Val Acc: 62.26%
+Epoch 11/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.27it/s, loss=1.31, acc=61.6] 
+Epoch 11: Train Loss: 1.3137, Train Acc: 61.57%, Val Loss: 1.2836, Val Acc: 66.15%
+Epoch 12/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.30it/s, loss=1.22, acc=64]   
+Epoch 12: Train Loss: 1.2248, Train Acc: 64.01%, Val Loss: 1.2325, Val Acc: 67.08%
+Epoch 13/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.48it/s, loss=1.16, acc=65.7] 
+Epoch 13: Train Loss: 1.1559, Train Acc: 65.71%, Val Loss: 1.1953, Val Acc: 66.87%
+Epoch 14/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.25it/s, loss=1.09, acc=67.3] 
+Epoch 14: Train Loss: 1.0905, Train Acc: 67.31%, Val Loss: 1.1376, Val Acc: 69.54%
+Epoch 15/15 [hybrid]: 100%|██████████| 143/143 [00:11<00:00, 12.34it/s, loss=1.04, acc=68.8] 
+Epoch 15: Train Loss: 1.0382, Train Acc: 68.83%, Val Loss: 1.1758, Val Acc: 67.79%
+
+Evaluating hybrid model...
+Evaluating: 100%|██████████| 31/31 [00:01<00:00, 19.04it/s]
+                           precision    recall  f1-score   support
+
+                   ADONIS     0.7500    0.9231    0.8276        13
+AFRICAN GIANT SWALLOWTAIL     0.7778    0.6364    0.7000        11
+           AMERICAN SNOOT     0.7500    0.8182    0.7826        11
+                    AN 88     0.9286    1.0000    0.9630        13
+                  APPOLLO     0.3438    0.8462    0.4889        13
+                    ATALA     0.9286    0.8667    0.8966        15
+ BANDED ORANGE HELICONIAN     0.6111    0.7333    0.6667        15
+           BANDED PEACOCK     0.8333    0.7692    0.8000        13
+            BECKERS WHITE     0.0000    0.0000    0.0000        12
+         BLACK HAIRSTREAK     0.7692    0.7692    0.7692        13
+              BLUE MORPHO     0.6667    0.5455    0.6000        11
+        BLUE SPOTTED CROW     0.8571    0.4615    0.6000        13
+           BROWN SIPROETA     0.8000    0.8000    0.8000        15
+            CABBAGE WHITE     0.6111    0.7857    0.6875        14
+          CAIRNS BIRDWING     0.7143    0.8333    0.7692        12
+       CHECQUERED SKIPPER     0.8182    0.6429    0.7200        14
+                 CHESTNUT     0.7692    0.7692    0.7692        13
+                CLEOPATRA     0.4444    0.2857    0.3478        14
+       CLODIUS PARNASSIAN     0.0000    0.0000    0.0000        13
+          CLOUDED SULPHUR     0.5000    0.5000    0.5000        14
+        COMMON BANDED AWL     0.7273    0.6154    0.6667        13
+        COMMON WOOD-NYMPH     0.4000    0.7143    0.5128        14
+              COPPER TAIL     0.5455    0.4286    0.4800        14
+                  CRECENT     0.6250    0.7143    0.6667        14
+            CRIMSON PATCH     0.8462    1.0000    0.9167        11
+            DANAID EGGFLY     0.8333    0.3571    0.5000        14
+             EASTERN COMA     0.4286    0.6429    0.5143        14
+     EASTERN DAPPLE WHITE     0.6364    0.5000    0.5600        14
+       EASTERN PINE ELFIN     0.5333    0.5714    0.5517        14
+          ELBOWED PIERROT     0.7857    0.8462    0.8148        13
+              GOLD BANDED     0.8000    0.7273    0.7619        11
+             GREAT EGGFLY     0.5714    0.6667    0.6154        12
+                GREAT JAY     0.5333    0.5714    0.5517        14
+ GREEN CELLED CATTLEHEART     0.7857    0.8462    0.8148        13
+          GREY HAIRSTREAK     0.6875    0.8462    0.7586        13
+            INDRA SWALLOW     0.7273    0.6667    0.6957        12
+          IPHICLUS SISTER     0.8000    0.8571    0.8276        14
+                    JULIA     0.6250    0.4167    0.5000        12
+             LARGE MARBLE     0.3750    0.5000    0.4286        12
+                MALACHITE     0.7500    0.5455    0.6316        11
+         MANGROVE SKIPPER     0.8462    0.8462    0.8462        13
+                   MESTRA     0.7000    0.5385    0.6087        13
+                METALMARK     0.6000    0.2727    0.3750        11
+   MILBERTS TORTOISESHELL     0.8000    0.5333    0.6400        15
+                  MONARCH     0.5882    0.7692    0.6667        13
+           MOURNING CLOAK     0.7917    1.0000    0.8837        19
+           ORANGE OAKLEAF     0.8571    0.4615    0.6000        13
+               ORANGE TIP     0.8125    0.9286    0.8667        14
+          ORCHARD SWALLOW     1.0000    0.7500    0.8571        12
+             PAINTED LADY     0.6923    0.8182    0.7500        11
+               PAPER KITE     0.6190    0.9286    0.7429        14
+                  PEACOCK     0.8182    0.7500    0.7826        12
+               PINE WHITE     0.7500    0.6923    0.7200        13
+         PIPEVINE SWALLOW     0.8462    0.8462    0.8462        13
+                 POPINJAY     0.8571    0.9231    0.8889        13
+        PURPLE HAIRSTREAK     0.5000    0.4167    0.4545        12
+          PURPLISH COPPER     0.4615    0.4286    0.4444        14
+            QUESTION MARK     1.0000    0.1667    0.2857        12
+              RED ADMIRAL     0.7059    0.9231    0.8000        13
+              RED CRACKER     0.9167    0.7857    0.8462        14
+              RED POSTMAN     0.7059    0.8571    0.7742        14
+       RED SPOTTED PURPLE     0.7692    0.7692    0.7692        13
+           SCARCE SWALLOW     0.7222    0.8667    0.7879        15
+      SILVER SPOT SKIPPER     0.5556    0.8333    0.6667        12
+            SLEEPY ORANGE     0.3750    0.5625    0.4500        16
+                SOOTYWING     0.6875    0.8462    0.7586        13
+         SOUTHERN DOGFACE     0.6667    0.6154    0.6400        13
+           STRAITED QUEEN     0.7143    0.7692    0.7407        13
+        TROPICAL LEAFWING     0.5833    0.5833    0.5833        12
+       TWO BARRED FLASHER     0.9000    0.7500    0.8182        12
+                   ULYSES     0.8571    0.9231    0.8889        13
+                  VICEROY     0.8000    0.6667    0.7273        12
+               WOOD SATYR     0.6364    0.7000    0.6667        10
+      YELLOW SWALLOW TAIL     1.0000    0.4545    0.6250        11
+          ZEBRA LONG WING     1.0000    0.8182    0.9000        11
+
+                 accuracy                         0.6810       975
+                macro avg     0.6937    0.6775    0.6688       975
+             weighted avg     0.6916    0.6810    0.6699       975
+
+
+Verifying hybrid model...
+
+============================================================
+WATERMARK VERIFICATION
+============================================================
+Target Fingerprint: CWMA2025_HybridWatermark_SecureOwnership
+Probe Samples: 100
+------------------------------------------------------------
+
+Fixed Weight Verification:
+  • Total Frozen Weights:     773
+  • Match Ratio:              1.000000
+  • Detection Threshold:      0.950000
+  • Fixed Weights Detected:   YES ✓
+------------------------------------------------------------
+
+Causal Attribution Verification:
+  • Cosine Similarity:        0.023715
+  • Pearson Correlation:      0.049671 (p-value: 1.16e-01)
+  • L2 Distance:              1.397344
+  • Dot Product:              0.023715
+  • Detection Threshold:      0.150000
+  • Causal Pattern Detected:  NO ✗
+------------------------------------------------------------
+Overall Watermark Status: DETECTED ✓
+============================================================
+
+
+================================================================================
+GENERATING COMPARISON VISUALIZATIONS
+================================================================================
+
+================================================================================
+COMPREHENSIVE EXPERIMENT RESULTS
+================================================================================
+
+--------------------------------------------------------------------------------
+BASELINE MODEL (No Watermark)
+--------------------------------------------------------------------------------
+  Accuracy:  0.6410
+  Precision: 0.6650
+  Recall:    0.6410
+  F1-Score:  0.6363
+  Watermark Detected: False
+
+--------------------------------------------------------------------------------
+FIXED WEIGHT WATERMARKED MODEL
+--------------------------------------------------------------------------------
+  Accuracy:  0.6503
+  Precision: 0.6723
+  Recall:    0.6503
+  F1-Score:  0.6440
+  Fixed Weight Match: 1.0000 (773 weights)
+  Watermark Detected: True
+  Performance Drop: -0.92%
+
+--------------------------------------------------------------------------------
+HYBRID WATERMARKED MODEL (Fixed + Causal)
+--------------------------------------------------------------------------------
+  Accuracy:  0.6810
+  Precision: 0.6916
+  Recall:    0.6810
+  F1-Score:  0.6699
+  Fixed Weight Match: 1.0000 (773 weights)
+  Causal Similarity: 0.0237
+  Watermark Detected: True
+  Performance Drop: -4.00%
+
+================================================================================
+KEY FINDINGS
+================================================================================
+  • Baseline Model: NOT watermarked
+  • Fixed Weight Model: Successfully watermarked
+  • Hybrid Model: Successfully watermarked
+  • Hybrid uses DUAL verification (Fixed=True, Causal=False)
+================================================================================
+
+
+================================================================================
+EXPERIMENT COMPLETED SUCCESSFULLY
+================================================================================
+
+Generated Files:
+  Models:
+    • baseline_best.pth
+    • fixed_weight_best.pth
+    • hybrid_best.pth
+
+  Individual Model Plots:
+    • baseline_training_history.png
+    • baseline_confusion_matrix.png
+    • baseline_metrics.png
+    • fixed_weight_training_history.png
+    • fixed_weight_confusion_matrix.png
+    • fixed_weight_metrics.png
+    • hybrid_training_history.png
+    • hybrid_confusion_matrix.png
+    • hybrid_metrics.png
+
+  Comparison Plots:
+    • all_models_performance_comparison.png
+    • watermark_verification_comparison.png
+    • watermarking_performance_impact.png
+
+  Results:
+    • cwma_experiment_results.json
+================================================================================
